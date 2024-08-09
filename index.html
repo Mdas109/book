@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cricket Chronicles</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .book {
+            width: 60%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page {
+            display: none;
+            padding-bottom: 60px; /* Added padding to create space for the buttons */
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-indent: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 20px; /* Positioned within the page content area */
+            left: 0;
+            right: 0;
+            padding: 0 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="book">
+        <div class="page active" id="page-1">
+            <h1>The Cricket Chronicles</h1>
+            <h2>Chapter 1: The Beginnings</h2>
+            <p>
+                In the small village of Kalapathar, where the air was thick with the scent of mangoes and the fields stretched endlessly, cricket was more than just a game; it was a way of life. Every evening, as the sun began to dip below the horizon, the village boys would gather at the dusty ground near the banyan tree. Bats made from neem wood, balls stitched from old rags, and wickets fashioned from sticks—they had it all.
+            </p>
+            <p>
+                Among them was a boy named Arjun. Tall for his age, with a shock of unruly hair and eyes that sparkled with mischief, Arjun was known far and wide as the best cricketer in Kalapathar. His father, a humble farmer, had once been a promising player himself but had to give up his dreams to tend to the family’s fields. Seeing his son’s talent, he vowed to support him in every way possible.
+            </p>
+            <p>
+                Arjun’s passion for cricket was unmatched. Every morning, before the first rays of sunlight could warm the earth, he was out practicing his cover drives and perfecting his bowling action. His favorite memory was...
+            </p>
+        </div>
+        <div class="page" id="page-2">
+            <h2>Chapter 2: The First Match</h2>
+            <p>
+                It was a bright Saturday morning when the news spread like wildfire through Kalapathar. The neighboring village, Ranjanpur, had challenged Kalapathar to a cricket match. The stakes were high—the winning team would take home a brand new set of cricket gear, something the boys of Kalapathar could only dream of.
+            </p>
+            <p>
+                Arjun’s heart raced with excitement. This was the moment he had been waiting for. His father, upon hearing the news, patted him on the back and said, "This is your chance, son. Show them what you’re made of."
+            </p>
+            <p>
+                The match day arrived, and the field was filled with spectators. The boys of Kalapathar, led by Arjun, were determined. They had practiced tirelessly, refining their strategies and sharpening their skills. The tension was palpable as the two teams lined up for the toss.
+            </p>
+        </div>
+        <div class="page" id="page-3">
+            <h2>Chapter 3: The Turning Point</h2>
+            <p>
+                The match was intense, with both teams giving their all. Ranjanpur batted first and set a challenging target. Kalapathar’s innings started off shaky, losing early wickets. The crowd grew silent as they saw their hopes dimming.
+            </p>
+            <p>
+                But Arjun stood firm at the crease, his eyes fixed on the ball, his mind focused. With every shot, he infused new life into the game. He played with a confidence and flair that left everyone in awe. It was a masterclass in batting.
+            </p>
+            <p>
+                As the match neared its end, Kalapathar needed 12 runs off the last over. Arjun was on strike. The bowler ran in, and with a sharp crack, Arjun sent the ball soaring over the boundary. The crowd erupted. With one more six, Kalapathar had won the match. Arjun was lifted on the shoulders of his teammates, a hero of his village.
+            </p>
+        </div>
+
+        <div class="button-container">
+            <button id="prev-page" disabled>Previous Page</button>
+            <button id="next-page">Next Page</button>
+        </div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const nextButton = document.getElementById('next-page');
+        const prevButton = document.getElementById('prev-page');
+        let currentPage = 0;
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length - 1) {
+                pages[currentPage].classList.remove('active');
+                currentPage++;
+                pages[currentPage].classList.add('active');
+            }
+            updateButtons();
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 0) {
+                pages[currentPage].classList.remove('active');
+                currentPage--;
+                pages[currentPage].classList.add('active');
+            }
+            updateButtons();
+        });
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 0;
+            nextButton.disabled = currentPage === pages.length - 1;
+        }
+ document.getElementById('').addEventListener('click', function() {
+            alert('Next page functionality is coming soon!');
+        });
+    </script>
+</body>
+</html>
