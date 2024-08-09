@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cricket Chronicles - Comic Edition</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .comic-page {
+            width: 80%;
+            max-width: 900px;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comic-page.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .comic-image {
+            width: 45%;
+            height: auto;
+            margin: 10px;
+            border: 2px solid black;
+        }
+
+        .comic-text {
+            font-size: 1.2em;
+            line-height: 1.4;
+            padding: 20px;
+            background-color: #fff176;
+            border: 2px solid black;
+            width: 45%;
+            box-sizing: border-box;
+            margin: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="comic-page active" id="page-1">
+        <img src="comic1.jpg" alt="Comic Image 1" class="comic-image">
+        <div class="comic-text">
+            In the small village of Kalapathar, cricket was more than just a game; it was a way of life.
+        </div>
+    </div>
+
+    <div class="comic-page reverse" id="page-2">
+        <div class="comic-text">
+            Arjun was known as the best cricketer in Kalapathar, and his father supported his dreams.
+        </div>
+        <img src="comic2.jpg" alt="Comic Image 2" class="comic-image">
+    </div>
+
+    <div class="comic-page" id="page-3">
+        <img src="comic3.jpg" alt="Comic Image 3" class="comic-image">
+        <div class="comic-text">
+            The neighboring village challenged Kalapathar to a cricket match, with new gear as the prize.
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="prev-page" disabled>Previous Page</button>
+        <button id="next-page">Next Page</button>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.comic-page');
+        const nextButton = document.getElementById('next-page');
+        const prevButton = document.getElementById('prev-page');
+        let currentPage = 0;
+
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pages.length - 1) {
+                pages[currentPage].classList.remove('active');
+                currentPage++;
+                pages[currentPage].classList.add('active');
+            }
+            updateButtons();
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 0) {
+                pages[currentPage].classList.remove('active');
+                currentPage--;
+                pages[currentPage].classList.add('active');
+            }
+            updateButtons();
+        });
+
+        function updateButtons() {
+            prevButton.disabled = currentPage === 0;
+            nextButton.disabled = currentPage === pages.length - 1;
+        }
+    </script>
+</body>
+</html>
